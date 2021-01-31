@@ -1,1 +1,5 @@
-Program.cs classından metotları deneyebilirsiniz. Hepsi çalışıyor 
+Program.cs classından metotları deneyebilirsiniz.(Add,Update,Delete,GetAllByBrand,GetAllByColor)
+Hepsi çalışıyor 
+
+
+
