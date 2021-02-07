@@ -14,19 +14,20 @@ namespace ConsoleIU
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            Console.WriteLine("BrandId si 1 olan araçlar");
-            Console.WriteLine("CarId\tBrand\tColor\tModelYear\t DailyPrice\t        Description");
-            foreach (var car in carManager.GetCarsByBrandId(1))
+            foreach (var brand in brandManager.GetAll())
             {
-                Console.WriteLine($"{car.CarId}\t{brandManager.Get(car.BrandId).BrandName}\t{colorManager.Get(car.ColorId).ColorName}\t{car.ModelYear}\t\t {car.DailyPrice}\t\t{car.Description}");
+                Console.WriteLine(brand.BrandId + " : " + brand.BrandName);
             }
 
-            Console.WriteLine("\n******************************************************************\n");
+            foreach (var car in carManager.GetAll())
+            {
+                Console.WriteLine(car.CarId + " " + car.CarName + " ----------  " + colorManager.Get(car.ColorId).ColorName);
+            }
 
-
-
-
-
+            foreach (var carDetail in carManager.GetCarDetails())
+            {
+                Console.WriteLine($"{carDetail.CarName}----{carDetail.BrandName}----{carDetail.ColorName}----{carDetail.DailyPrice}");
+            }
         }
     }
 }
