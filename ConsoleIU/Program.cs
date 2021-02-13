@@ -14,20 +14,34 @@ namespace ConsoleIU
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            foreach (var brand in brandManager.GetAll())
+            //foreach (var brand in brandManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(brand.BrandId + " : " + brand.BrandName);
+            //}
+            var result = carManager.GetAll();
+            if (result.Success)
             {
-                Console.WriteLine(brand.BrandId + " : " + brand.BrandName);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.CarId + " " + car.CarName + " ----------  " + colorManager.Get(car.ColorId).Data.ColorName);
+                }
+
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
 
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.CarId + " " + car.CarName + " ----------  " + colorManager.Get(car.ColorId).ColorName);
-            }
 
-            foreach (var carDetail in carManager.GetCarDetails())
-            {
-                Console.WriteLine($"{carDetail.CarName}----{carDetail.BrandName}----{carDetail.ColorName}----{carDetail.DailyPrice}");
-            }
+            //foreach (var carDetail in carManager.GetCarDetails().Data)
+            //{
+            //    Console.WriteLine($"{carDetail.CarName}----{carDetail.BrandName}----{carDetail.ColorName}----{carDetail.DailyPrice}");
+            //}
+
+            //foreach (var carById in carManager.GetCarsByBrandId(1).Data)
+            //{
+            //    Console.WriteLine($"{carById.CarId}----{carById.CarName}----{carById.BrandName}----{carById.ColorName}");
+            //}
         }
     }
 }
