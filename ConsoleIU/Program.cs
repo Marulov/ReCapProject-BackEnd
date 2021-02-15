@@ -13,24 +13,35 @@ namespace ConsoleIU
             CarManager carManager = new CarManager(new EfCarDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+
+            var result = rentalManager.GetByRentalCarId(1);
+            if (result.Success)
+            {
+                foreach (var rental in result.Data)
+                {
+                    Console.WriteLine(rental.CarName + " : " + rental.CustomerName);
+                }
+            }
 
             //foreach (var brand in brandManager.GetAll().Data)
             //{
             //    Console.WriteLine(brand.BrandId + " : " + brand.BrandName);
             //}
-            var result = carManager.GetAll();
-            if (result.Success)
-            {
-                foreach (var car in result.Data)
-                {
-                    Console.WriteLine(car.CarId + " " + car.CarName + " ----------  " + colorManager.Get(car.ColorId).Data.ColorName);
-                }
+            //var result = carManager.GetAll();
+            //if (result.Success)
+            //{
+            //    foreach (var car in result.Data)
+            //    {
+            //        Console.WriteLine(car.CarId + " " + car.CarName + " ----------  " + colorManager.Get(car.ColorId).Data.ColorName);
+            //    }
 
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
+            //}
+            //else
+            //{
+            //    Console.WriteLine(result.Message);
+            //}
 
 
             //foreach (var carDetail in carManager.GetCarDetails().Data)

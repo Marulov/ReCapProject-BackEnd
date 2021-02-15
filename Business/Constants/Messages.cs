@@ -10,5 +10,6 @@ namespace Business.Constants
         public static string ProductAdded = "Ürün eklendi";
         public static string MaintenanceTime = "Sistem bakımda";
         public static string ProductsListed = "Ürünler listelendi";
+        public static string CarNotHere = "Arabanın teslim adresini girmelisiniz";
     }
 }
