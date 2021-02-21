@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
@@ -22,9 +23,9 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
-            FluentValidationTool.Validate(new RentalValidator(), rental);
             _rentalDal.Add(rental);
             return new SuccessResult();
         }
