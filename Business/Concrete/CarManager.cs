@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
@@ -23,17 +25,10 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            Console.WriteLine("Arabanın ismi 2 harften ve günlük parası 0 liradan büyük olmalıdır.");
-            if (car.Description.Length>2 && car.DailyPrice>0)
-            {
-                _carDal.Add(car);
 
-                return new SuccessResult(Messages.ProductAdded);
-            }
-            else
-            {
-                return new ErrorResult(Messages.ProductNameInValid);
-            }
+            FluentValidationTool.Validate(new CarValidator(), car);
+            _carDal.Add(car);
+            return new SuccessResult(Messages.ProductAdded);
         }
 
         public IResult Delete(Car car)
@@ -49,7 +44,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour == 16)
+            if (DateTime.Now.Hour == 18)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
