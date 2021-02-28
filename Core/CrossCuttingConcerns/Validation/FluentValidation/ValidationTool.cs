@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.CrossCuttingConcerns.Validation.FluentValidation
 {
-    public static class FluentValidationTool
+    public static class ValidationTool
     {
         public static void Validate(IValidator validator, object entity)
         {
