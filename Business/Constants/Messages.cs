@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -12,5 +13,6 @@ namespace Business.Constants
         public static string ProductsListed = "Ürünler listelendi";
         public static string CarNotHere = "Arabanın teslim adresini girmelisiniz";
         public static string FailAddedImageLimit = "Bir arabanın en fazla 5 resmi olabilir!";
+        public static string AuthorizationDenied = "Yetkiniz yok!";
     }
 }

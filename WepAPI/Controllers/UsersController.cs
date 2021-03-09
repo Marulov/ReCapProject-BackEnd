@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,9 +33,9 @@ namespace WepAPI.Controllers
         }
 
         [HttpGet("get")]
-        public IActionResult Get(int id)
+        public IActionResult GetById(int id)
         {
-            var result = _userService.Get(id);
+            var result = _userService.GetById(id);
             if (result.Success)
             {
                 return Ok(result);
