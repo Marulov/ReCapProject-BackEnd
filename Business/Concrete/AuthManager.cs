@@ -57,7 +57,6 @@ namespace Business.Concrete
 
         public IResult UserExists(string email)
         {
-            //(_userService.GetByMail(email) != null) burda bir sorun var 
             if (_userService.GetByMail(email) != null)
             {
                 return new ErrorResult("Kullanıcı zaten var");
