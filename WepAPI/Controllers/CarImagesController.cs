@@ -43,7 +43,7 @@ namespace WepAPI.Controllers
         }
 
         [HttpGet("getimagesbycarid")]
-        public IActionResult GetImagesByCarId([FromForm(Name = ("CarId"))] int id)
+        public IActionResult GetImagesByCarId([FromForm(Name = ("carId"))] int id)
         {
             var result = _carImageService.GetImagesByCarId(id);
             if (result.Success)
